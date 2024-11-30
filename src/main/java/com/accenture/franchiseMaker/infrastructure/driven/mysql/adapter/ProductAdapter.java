@@ -2,12 +2,15 @@ package com.accenture.franchiseMaker.infrastructure.driven.mysql.adapter;
 
 import com.accenture.franchiseMaker.domain.model.Product;
 import com.accenture.franchiseMaker.domain.spi.IProductPersistencePort;
+import com.accenture.franchiseMaker.infrastructure.driven.mysql.entity.ProductEntity;
 import com.accenture.franchiseMaker.infrastructure.driven.mysql.mapper.IProductEntityMapper;
 import com.accenture.franchiseMaker.infrastructure.driven.mysql.repository.IProductRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
+@Transactional
 @RequiredArgsConstructor
 public class ProductAdapter implements IProductPersistencePort {
 
@@ -15,9 +18,11 @@ public class ProductAdapter implements IProductPersistencePort {
     private final IProductEntityMapper productEntityMapper;
 
     @Override
-    public void createProduct(Product product) {
+    public Product createProduct(Product product) {
 
-        productRepository.save(productEntityMapper.toEntity(product));
+        ProductEntity response = productRepository.save(productEntityMapper.toEntity(product));
+
+        return productEntityMapper.toProduct(response);
     }
 
     @Override
@@ -29,5 +34,17 @@ public class ProductAdapter implements IProductPersistencePort {
     @Override
     public Boolean existsByNameAndBranchId(String name, Long branchId) {
         return productRepository.existsByNameAndBranchId(name, branchId);
+    }
+
+    @Override
+    public Boolean existsById(Long productId) {
+        return productRepository.existsById(productId);
+    }
+
+    @Override
+    public void deleteProduct(Long productId) {
+
+        productRepository.deleteById(productId);
+
     }
 }

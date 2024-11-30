@@ -44,6 +44,12 @@ public class ControllerAdvisor {
                 .body(new ExceptionResponse(e.getMessage(), HttpStatus.CONFLICT.toString(), LocalDateTime.now()));
     }
 
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleProductNotFoundException(ProductNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ExceptionResponse(e.getMessage(), HttpStatus.NOT_FOUND.toString(), LocalDateTime.now()));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
 
