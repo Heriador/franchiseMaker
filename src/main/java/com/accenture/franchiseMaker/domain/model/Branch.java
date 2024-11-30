@@ -7,6 +7,7 @@ public class Branch {
     private Long id;
     private String name;
     private List<Product> products;
+    private Franchise franchise;
 
     public Branch() {
     }
@@ -14,6 +15,14 @@ public class Branch {
     public Branch(String name, List<Product> products) {
         this.name = name;
         this.products = products;
+    }
+
+    public Franchise getFranchise() {
+        return franchise;
+    }
+
+    public void setFranchise(Franchise franchise) {
+        this.franchise = franchise;
     }
 
     public Long getId() {
