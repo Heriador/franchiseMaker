@@ -5,7 +5,7 @@ import com.accenture.franchiseMaker.infrastructure.driven.mysql.entity.ProductEn
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {IBranchEntityMapper.class})
 public interface IProductEntityMapper {
 
      @Mapping(target = "id", ignore = true)

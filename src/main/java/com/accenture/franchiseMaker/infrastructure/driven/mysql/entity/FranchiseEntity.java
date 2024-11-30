@@ -9,25 +9,20 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "branch")
+@Table(name = "franchise")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BranchEntity {
+public class FranchiseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ProductEntity> products;
-
-    @ManyToOne
-    @JoinColumn(name = "franchise_id", nullable = false)
-    private FranchiseEntity franchise;
-
+    @OneToMany(mappedBy = "franchise",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<BranchEntity> branches;
 }
