@@ -46,5 +46,13 @@ public class FranchiseUseCases implements IFranchiseServicePort {
         return franchise;
     }
 
+    @Override
+    public Franchise updateFranchise(Franchise franchise) {
 
+        if(Boolean.FALSE.equals(franchisePersistencePort.existsById(franchise.getId()))){
+            throw new FranchiseNotFoundException("Franchise not found");
+        }
+
+        return franchisePersistencePort.updateFranchise(franchise);
+    }
 }

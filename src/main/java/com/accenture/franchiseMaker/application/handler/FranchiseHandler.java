@@ -2,6 +2,7 @@ package com.accenture.franchiseMaker.application.handler;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateFranchiseDto;
 import com.accenture.franchiseMaker.application.dto.response.FranchiseProductsMoreStockResponse;
+import com.accenture.franchiseMaker.application.dto.response.FranchiseResponse;
 import com.accenture.franchiseMaker.application.mapper.request.IFranchiseRequestMapper;
 import com.accenture.franchiseMaker.application.mapper.response.IFranchiseResponseMapper;
 import com.accenture.franchiseMaker.domain.api.IFranchiseServicePort;
@@ -27,5 +28,14 @@ public class FranchiseHandler implements IFranchiseHandler{
        Franchise franchise = franchiseServicePort.getProductsWithMoreStockByFranchiseId(franchiseId);
 
        return franchiseResponseMapper.toFranchiseProductsMoreStockResponse(franchise);
+    }
+
+    @Override
+    public FranchiseResponse updateFranchise(Long franchiseId, CreateFranchiseDto createFranchiseDto) {
+
+        Franchise franchise = franchiseRequestMapper.toFranchise(createFranchiseDto);
+        franchise.setId(franchiseId);
+
+        return franchiseResponseMapper.toFranchiseResponse(franchiseServicePort.updateFranchise(franchise));
     }
 }
