@@ -12,4 +12,7 @@ public interface IFranchisePersistencePort {
 
     Boolean existsByName(String name);
 
+    Boolean existsById(Long id);
+
+    Franchise updateFranchise(Franchise franchise);
 }

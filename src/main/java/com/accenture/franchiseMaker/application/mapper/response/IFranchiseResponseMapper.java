@@ -1,6 +1,7 @@
 package com.accenture.franchiseMaker.application.mapper.response;
 
 import com.accenture.franchiseMaker.application.dto.response.FranchiseProductsMoreStockResponse;
+import com.accenture.franchiseMaker.application.dto.response.FranchiseResponse;
 import com.accenture.franchiseMaker.application.dto.response.ProductResponse;
 import com.accenture.franchiseMaker.domain.model.Franchise;
 import org.mapstruct.Mapper;
@@ -9,8 +10,10 @@ import org.mapstruct.Named;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { IBranchResponseMapper.class })
 public interface IFranchiseResponseMapper {
+
+    FranchiseResponse toFranchiseResponse(Franchise franchise);
 
     @Mapping(target = "products", source = "franchise",qualifiedByName = "mapProducts")
     FranchiseProductsMoreStockResponse toFranchiseProductsMoreStockResponse(Franchise franchise);

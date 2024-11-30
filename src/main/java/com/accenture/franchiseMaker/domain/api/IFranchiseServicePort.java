@@ -9,4 +9,6 @@ public interface IFranchiseServicePort {
     Franchise getFranchiseById(Long id);
 
     Franchise getProductsWithMoreStockByFranchiseId(Long franchiseId);
+
+    Franchise updateFranchise(Franchise franchise);
 }
