@@ -1,15 +1,13 @@
 package com.accenture.franchiseMaker.infrastructure.driving.restcontroller;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateFranchiseDto;
+import com.accenture.franchiseMaker.application.dto.response.FranchiseProductsMoreStockResponse;
 import com.accenture.franchiseMaker.application.handler.IFranchiseHandler;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/franchise")
@@ -25,5 +23,13 @@ public class FranchiseRestController {
         franchiseHandler.createFranchise(createFranchiseDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/products-with-more-stock/{franchiseId}")
+    public ResponseEntity<FranchiseProductsMoreStockResponse> getProductsWithMoreStockByFranchiseId(@PathVariable Long franchiseId){
+
+        FranchiseProductsMoreStockResponse response = franchiseHandler.getProductsWithMoreStockByFranchiseId(franchiseId);
+
+        return ResponseEntity.ok(response);
     }
 }

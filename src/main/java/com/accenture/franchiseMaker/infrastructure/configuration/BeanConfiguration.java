@@ -50,7 +50,7 @@ public class BeanConfiguration {
 
     @Bean
     public IBranchServicePort branchServicePort(IBranchPersistencePort branchPersistencePort){
-        return new BranchUseCases(branchPersistencePort());
+        return new BranchUseCases(branchPersistencePort(), franchiseServicePort(franchisePersistencePort()));
     }
 
     @Bean

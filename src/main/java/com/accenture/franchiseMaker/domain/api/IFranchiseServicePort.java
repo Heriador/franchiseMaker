@@ -7,4 +7,6 @@ public interface IFranchiseServicePort {
     void createFranchise(Franchise franchise);
 
     Franchise getFranchiseById(Long id);
+
+    Franchise getProductsWithMoreStockByFranchiseId(Long franchiseId);
 }

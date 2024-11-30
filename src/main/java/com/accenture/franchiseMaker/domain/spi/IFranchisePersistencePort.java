@@ -11,4 +11,5 @@ public interface IFranchisePersistencePort {
     Optional<Franchise> getFranchiseById(Long id);
 
     Boolean existsByName(String name);
+
 }
