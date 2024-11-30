@@ -16,7 +16,7 @@ public class ProductUseCases implements IProductServicePort {
     @Override
     public void createProduct(Product product) {
 
-        if(productPersistencePort.findProductByName(product.getName()).isPresent()){
+        if(Boolean.TRUE.equals(productPersistencePort.existsByNameAndBranchId(product.getName(), product.getBranch().getId()))) {
             throw new ProductAlreadyExistsException("Product already exists");
         }
 

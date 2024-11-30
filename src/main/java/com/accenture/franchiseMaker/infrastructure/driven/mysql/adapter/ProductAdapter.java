@@ -25,4 +25,9 @@ public class ProductAdapter implements IProductPersistencePort {
 
         return productRepository.findByName(name).map(productEntityMapper::toProduct);
     }
+
+    @Override
+    public Boolean existsByNameAndBranchId(String name, Long branchId) {
+        return productRepository.existsByNameAndBranchId(name, branchId);
+    }
 }
