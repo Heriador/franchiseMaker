@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import lombok.Setter;
 public class CreateProductDto {
 
     @NotBlank(message = "Name is required")
-    @Size(max = 50, message = "Name must be less than 50 characters")
+    @Length(min = 3, max = 50, message = "Name must be at least 3 characters and at most 50 characters")
     private String name;
 
     @NotNull(message = "Stock is required")

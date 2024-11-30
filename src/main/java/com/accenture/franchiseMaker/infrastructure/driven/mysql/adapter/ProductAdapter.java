@@ -32,6 +32,11 @@ public class ProductAdapter implements IProductPersistencePort {
     }
 
     @Override
+    public Optional<Product> findProductById(Long productId) {
+        return productRepository.findById(productId).map(productEntityMapper::toProduct);
+    }
+
+    @Override
     public Boolean existsByNameAndBranchId(String name, Long branchId) {
         return productRepository.existsByNameAndBranchId(name, branchId);
     }
@@ -46,5 +51,23 @@ public class ProductAdapter implements IProductPersistencePort {
 
         productRepository.deleteById(productId);
 
+    }
+
+    @Override
+    public Product updateProduct(Product product) {
+
+        ProductEntity productEntity = productRepository.findById(product.getId()).orElseThrow();
+
+        if(product.getName() != null){
+            productEntity.setName(product.getName());
+        }
+
+        if(product.getStock() != null){
+            productEntity.setStock(product.getStock());
+        }
+
+        ProductEntity response = productRepository.save(productEntity);
+
+        return productEntityMapper.toProduct(response);
     }
 }

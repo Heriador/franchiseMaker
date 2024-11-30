@@ -10,9 +10,13 @@ public interface IProductPersistencePort {
 
     Optional<Product> findProductByName(String name);
 
+    Optional<Product> findProductById(Long productId);
+
     Boolean existsByNameAndBranchId(String name, Long branchId);
 
     Boolean existsById(Long productId);
 
     void deleteProduct(Long productId);
+
+    Product updateProduct(Product product);
 }
