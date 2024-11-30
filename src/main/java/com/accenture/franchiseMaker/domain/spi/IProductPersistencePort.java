@@ -9,4 +9,6 @@ public interface IProductPersistencePort {
     void createProduct(Product product);
 
     Optional<Product> findProductByName(String name);
+
+    Boolean existsByNameAndBranchId(String name, Long branchId);
 }

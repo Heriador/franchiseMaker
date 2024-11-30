@@ -17,4 +17,8 @@ public class CreateProductDto {
     @NotNull(message = "Stock is required")
     @PositiveOrZero(message = "Stock must be greater or equal to 0")
     private Long stock;
+
+    @NotNull(message = "BranchId is required")
+    @Positive(message = "BranchId must be greater than 0")
+    private Long branchId;
 }
