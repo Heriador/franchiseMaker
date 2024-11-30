@@ -1,4 +1,4 @@
-package com.accenture.franchiseMaker.application.mapper;
+package com.accenture.franchiseMaker.application.mapper.request;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateProductDto;
 import com.accenture.franchiseMaker.domain.api.IBranchServicePort;

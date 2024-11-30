@@ -1,7 +1,7 @@
 package com.accenture.franchiseMaker.application.handler;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateBranchDto;
-import com.accenture.franchiseMaker.application.mapper.IBranchRequestMapper;
+import com.accenture.franchiseMaker.application.mapper.request.IBranchRequestMapper;
 import com.accenture.franchiseMaker.domain.api.IBranchServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

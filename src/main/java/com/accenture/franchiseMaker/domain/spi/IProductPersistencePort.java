@@ -6,9 +6,13 @@ import java.util.Optional;
 
 public interface IProductPersistencePort {
 
-    void createProduct(Product product);
+    Product createProduct(Product product);
 
     Optional<Product> findProductByName(String name);
 
     Boolean existsByNameAndBranchId(String name, Long branchId);
+
+    Boolean existsById(Long productId);
+
+    void deleteProduct(Long productId);
 }

@@ -4,5 +4,7 @@ import com.accenture.franchiseMaker.domain.model.Product;
 
 public interface IProductServicePort {
 
-    void createProduct(Product product);
+    Product createProduct(Product product);
+
+    void deleteProduct(Long productId);
 }

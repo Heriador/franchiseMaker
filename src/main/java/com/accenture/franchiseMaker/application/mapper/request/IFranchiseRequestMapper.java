@@ -1,4 +1,4 @@
-package com.accenture.franchiseMaker.application.mapper;
+package com.accenture.franchiseMaker.application.mapper.request;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateFranchiseDto;
 import com.accenture.franchiseMaker.domain.model.Franchise;
