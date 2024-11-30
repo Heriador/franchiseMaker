@@ -1,4 +1,4 @@
-package com.accenture.franchiseMaker.infrastructure.driving;
+package com.accenture.franchiseMaker.infrastructure.driving.restcontroller;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateProductDto;
 import com.accenture.franchiseMaker.application.handler.IProductHandler;

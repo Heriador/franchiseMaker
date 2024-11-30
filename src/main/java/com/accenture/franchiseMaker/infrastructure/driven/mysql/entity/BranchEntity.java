@@ -2,28 +2,28 @@ package com.accenture.franchiseMaker.infrastructure.driven.mysql.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Table(name = "product")
-@Data
+@Table(name = "branch")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductEntity {
+public class BranchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private Long stock;
-
-    @ManyToOne
-    @JoinColumn(name = "branch_id", nullable = false)
-    private BranchEntity branch;
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<ProductEntity> products;
 
 }
