@@ -11,4 +11,8 @@ public interface IBranchPersistencePort {
     Optional<Branch> getBranchById(Long id);
 
     Boolean existsByNameAndFranchiseId(String name, Long franchiseId);
+
+    Boolean existsById(Long id);
+
+    Branch updateBranch(Branch branch);
 }

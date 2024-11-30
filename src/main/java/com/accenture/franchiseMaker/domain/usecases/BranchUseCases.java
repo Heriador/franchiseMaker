@@ -31,4 +31,14 @@ public class BranchUseCases implements IBranchServicePort {
         return branchPersistencePort.getBranchById(id)
                 .orElseThrow(() -> new BranchNotFoundException("Branch not found"));
     }
+
+    @Override
+    public Branch updateBranch(Branch branch) {
+
+        if(Boolean.FALSE.equals(branchPersistencePort.existsById(branch.getId()))){
+            throw new BranchNotFoundException("Branch not found");
+        }
+
+        return branchPersistencePort.updateBranch(branch);
+    }
 }
