@@ -1,6 +1,7 @@
 package com.accenture.franchiseMaker.application.handler;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateProductDto;
+import com.accenture.franchiseMaker.application.dto.request.UpdateProductDto;
 import com.accenture.franchiseMaker.application.dto.response.ProductResponse;
 import com.accenture.franchiseMaker.application.mapper.request.IProductRequestMapper;
 import com.accenture.franchiseMaker.application.mapper.response.IProductResponseMapper;
@@ -26,10 +27,18 @@ public class ProductHandler implements IProductHandler{
     }
 
     @Override
-    public Void deleteProduct(Long productId) {
+    public void deleteProduct(Long productId) {
 
         productServicePort.deleteProduct(productId);
 
-        return null;
+    }
+
+    @Override
+    public ProductResponse updateProduct(UpdateProductDto updateProductDto, Long productId) {
+
+        Product product = productRequestMapper.toProduct(updateProductDto);
+        product.setId(productId);
+
+        return productResponseMapper.toProductResponse(productServicePort.updateProduct(product));
     }
 }

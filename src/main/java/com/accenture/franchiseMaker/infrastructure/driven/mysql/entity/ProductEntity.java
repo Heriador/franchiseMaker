@@ -22,7 +22,7 @@ public class ProductEntity {
     @Column(nullable = false)
     private Long stock;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "branch_id", nullable = false)
     private BranchEntity branch;
 

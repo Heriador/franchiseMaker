@@ -1,6 +1,7 @@
 package com.accenture.franchiseMaker.infrastructure.driving.restcontroller;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateProductDto;
+import com.accenture.franchiseMaker.application.dto.request.UpdateProductDto;
 import com.accenture.franchiseMaker.application.dto.response.ProductResponse;
 import com.accenture.franchiseMaker.application.handler.IProductHandler;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,6 +33,13 @@ public class ProductRestController {
         productHandler.deleteProduct(productId);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PatchMapping("/{productId}")
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long productId, @Valid @RequestBody UpdateProductDto updateProductDto) {
+        ProductResponse response = productHandler.updateProduct(updateProductDto, productId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 }

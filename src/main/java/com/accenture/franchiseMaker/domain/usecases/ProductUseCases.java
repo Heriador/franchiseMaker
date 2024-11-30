@@ -35,4 +35,14 @@ public class ProductUseCases implements IProductServicePort {
         productPersistencePort.deleteProduct(productId);
 
     }
+
+    @Override
+    public Product updateProduct(Product product) {
+
+        if(Boolean.FALSE.equals(productPersistencePort.existsById(product.getId()))) {
+            throw new ProductNotFoundException("Product not found");
+        }
+
+        return productPersistencePort.updateProduct(product);
+    }
 }

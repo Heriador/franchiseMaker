@@ -11,7 +11,8 @@ public interface IProductEntityMapper {
      @Mapping(target = "id", ignore = true)
      ProductEntity toEntity(Product product);
 
-     @Mapping(target = "branch", ignore = true)
+     @Mapping(target = "branch.products", ignore = true)
+     @Mapping(target = "branch.franchise.branches", ignore = true)
      Product toProduct(ProductEntity productEntity);
 
 }
