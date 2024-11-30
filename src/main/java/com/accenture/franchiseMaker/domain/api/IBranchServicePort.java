@@ -4,5 +4,7 @@ import com.accenture.franchiseMaker.domain.model.Branch;
 
 public interface IBranchServicePort {
 
-    void createBranch(Branch branch);
+    Void createBranch(Branch branch);
+
+    Branch getBranchById(Long id);
 }

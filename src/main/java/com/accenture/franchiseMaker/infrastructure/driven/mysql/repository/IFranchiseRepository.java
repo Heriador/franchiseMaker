@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IFranchiseRepository extends JpaRepository<FranchiseEntity, Long> {
 
+    Boolean existsByName(String name);
+
 }

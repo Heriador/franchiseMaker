@@ -2,6 +2,7 @@ package com.accenture.franchiseMaker.infrastructure.driving.restcontroller;
 
 import com.accenture.franchiseMaker.application.dto.request.CreateBranchDto;
 import com.accenture.franchiseMaker.application.handler.IBranchHandler;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class BranchRestController {
     private final IBranchHandler branchHandler;
 
     @PostMapping
-    public ResponseEntity<Void> createBranch(@RequestBody CreateBranchDto createBranchDto) {
+    public ResponseEntity<Void> createBranch(@Valid @RequestBody CreateBranchDto createBranchDto) {
         branchHandler.createBranch(createBranchDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();

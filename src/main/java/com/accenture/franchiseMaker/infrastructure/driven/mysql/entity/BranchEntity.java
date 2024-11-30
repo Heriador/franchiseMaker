@@ -23,11 +23,11 @@ public class BranchEntity {
     @Column(nullable = false)
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "franchise_id")
+    private FranchiseEntity franchise;
+
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ProductEntity> products;
-
-    @ManyToOne
-    @JoinColumn(name = "franchise_id", nullable = false)
-    private FranchiseEntity franchise;
 
 }

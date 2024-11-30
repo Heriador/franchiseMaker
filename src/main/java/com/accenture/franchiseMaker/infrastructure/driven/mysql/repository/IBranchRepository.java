@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IBranchRepository extends JpaRepository<BranchEntity, Long> {
 
-
+    Boolean existsByNameAndFranchiseId(String name, Long franchiseId);
 }
