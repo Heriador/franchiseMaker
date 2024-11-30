@@ -7,4 +7,6 @@ public interface IBranchServicePort {
     Void createBranch(Branch branch);
 
     Branch getBranchById(Long id);
+
+    Branch updateBranch(Branch branch);
 }
