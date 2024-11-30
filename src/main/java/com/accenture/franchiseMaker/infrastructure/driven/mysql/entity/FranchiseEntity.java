@@ -23,6 +23,6 @@ public class FranchiseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "franchise",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "franchise",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private List<BranchEntity> branches;
 }

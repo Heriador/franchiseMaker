@@ -11,5 +11,6 @@ public interface IBranchEntityMapper {
     @Mapping(target = "id", ignore = true)
     BranchEntity toEntity(Branch branch);
 
+    @Mapping(target = "franchise", ignore = true)
     Branch toBranch(BranchEntity branchEntity);
 }
